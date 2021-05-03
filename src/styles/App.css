@@ -1,0 +1,82 @@
+:root {
+	--nav-background: #eff3f6;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/*-----------------------------------------*/
+
+.Header {
+	height: 8vh;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	background-color: var(--nav-background);
+	padding: 10px 20px;
+}
+
+.HeaderLeft {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding: 1em;
+}
+
+.Button {
+	cursor: pointer;
+}
+
+.PrimaryButton {
+	margin: 0 0.5em 0 0.5em;
+	fill: #1a99f6;
+}
+
+.SecondaryButton {
+	margin: 0 0.5em 0 0.5em;
+	fill: #556c86;
+}
+
+.SecondaryButton:hover {
+	fill: #1a99f6;
+}
+
+.HeaderRight {
+	margin-left: auto;
+}
+
+.Duration {
+	background-color: var(--nav-background);
+}
