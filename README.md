@@ -2,6 +2,8 @@
 
 My submission for the `Converation Intelligence` assignment. It lets the users to play a phone call recording and see the transcript of that recording.
 
+Demo: [https://conversation-intelligence.web.app](https://conversation-intelligence.web.app)
+
 ## Build Instructions
 
 1. From the root project directory, run `npm install`
