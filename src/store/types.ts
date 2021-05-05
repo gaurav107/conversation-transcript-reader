@@ -11,19 +11,14 @@ export type ReduxAction = {
 
 export interface ReduxState {
 	recording: any
-	transcript: Transcript
+	transcript: Array<Array<WordTimestamp>>
 	currentTime: number
 	duration: number
 	isPlaying: boolean
 }
 
-interface Transcript {
-	transcript_text: Array<string>
-	word_timings: Array<Array<WordTimestamp>>
-}
-
-interface WordTimestamp {
-	startTime: string
-	endTime: string
+export interface WordTimestamp {
+	startTime: number
+	endTime: number
 	word: string
 }

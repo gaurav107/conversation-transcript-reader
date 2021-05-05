@@ -2,6 +2,7 @@ import React, { Component, createRef, RefObject } from 'react'
 
 type Props = {
 	audio: any
+	onEnded: () => void
 	setDuration: (duration: number) => void
 	updateCurrentTime: (time: number) => void
 }
@@ -9,6 +10,7 @@ type Props = {
 class AudioPlayer extends Component<Props> {
 	audioRef: RefObject<HTMLAudioElement>
 	interval: NodeJS.Timeout
+	duration: number
 
 	constructor(props) {
 		super(props)
@@ -25,7 +27,10 @@ class AudioPlayer extends Component<Props> {
 		this.interval && clearInterval(this.interval)
 	}
 
-	handleDuration = () => this.props.setDuration(this.audioRef.current?.duration)
+	handleDuration = () => {
+		this.duration = this.audioRef.current?.duration
+		this.props.setDuration(this.duration)
+	}
 
 	playPause = () => {
 		const { current } = this.audioRef
@@ -35,7 +40,16 @@ class AudioPlayer extends Component<Props> {
 
 	seekBy = (seconds: number) => {
 		const { current } = this.audioRef
-		current.currentTime += seconds
+		let targetTime = current.currentTime + seconds
+		if (targetTime <= 0) targetTime = 0
+		else if (targetTime >= this.duration) targetTime = this.duration
+		else current.currentTime = targetTime
+	}
+
+	seekTo = (seconds: number) => {
+		const { current } = this.audioRef
+		current.currentTime = seconds
+		this.props.updateCurrentTime(current.currentTime)
 	}
 
 	updateCurrentTime = () => {
@@ -47,7 +61,12 @@ class AudioPlayer extends Component<Props> {
 
 	render() {
 		return (
-			<audio ref={this.audioRef} onPlay={this.updateCurrentTime} onPause={this.updateCurrentTime}>
+			<audio
+				ref={this.audioRef}
+				onPlay={this.updateCurrentTime}
+				onPause={this.updateCurrentTime}
+				onEnded={this.props.onEnded}
+			>
 				<source src={this.props.audio} />
 			</audio>
 		)

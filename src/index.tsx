@@ -4,12 +4,27 @@ import './styles/index.css'
 import App from './components/App'
 import store from './store'
 import { Provider } from 'react-redux'
+import { ThemeProvider } from 'styled-components'
 import reportWebVitals from './reportWebVitals'
+
+const theme = {
+	primary: 'rgba(26, 153, 246)',
+	primary5: 'rgba(26, 153, 246, 0.05)',
+	primary25: 'rgba(26, 153, 246, 0.25)',
+	secondary: 'rgba(136, 104, 233)',
+	secondary25: 'rgba(136, 104, 233, 0.25)',
+	headerBackground: '#EFF3F6',
+	primaryText: '#556c86',
+	secondaryText: '#354053',
+	fontSize: '13px',
+}
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<ThemeProvider theme={theme}>
+				<App />
+			</ThemeProvider>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')

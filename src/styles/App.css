@@ -1,5 +1,11 @@
 :root {
-	--nav-background: #eff3f6;
+	--primary-color: rgba(26, 153, 246);
+	--secondary-color: rgba(136, 104, 233);
+	--dark-gray: rgb(86, 109, 133);
+	--light-gray: #eff3f6;
+	--selected-transcript-box: rgba(26, 153, 246, 0.05);
+	--selected-transcript-text: rgba(26, 153, 246, 0.25);
+	--font-size: 13px;
 }
 
 .App-logo {
@@ -35,48 +41,4 @@
 	to {
 		transform: rotate(360deg);
 	}
-}
-
-/*-----------------------------------------*/
-
-.Header {
-	height: 8vh;
-	background-color: black;
-	display: flex;
-	align-items: center;
-	background-color: var(--nav-background);
-	padding: 10px 20px;
-}
-
-.HeaderLeft {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	padding: 1em;
-}
-
-.Button {
-	cursor: pointer;
-}
-
-.PrimaryButton {
-	margin: 0 0.5em 0 0.5em;
-	fill: #1a99f6;
-}
-
-.SecondaryButton {
-	margin: 0 0.5em 0 0.5em;
-	fill: #556c86;
-}
-
-.SecondaryButton:hover {
-	fill: #1a99f6;
-}
-
-.HeaderRight {
-	margin-left: auto;
-}
-
-.Duration {
-	background-color: var(--nav-background);
 }

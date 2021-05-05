@@ -10,6 +10,11 @@ export const pause = (): ReduxAction => ({
 	data: false,
 })
 
+export const stop = (): ReduxAction => ({
+	type: ActionNames.PLAY,
+	data: false,
+})
+
 export const setDuration = (duration: number): ReduxAction => ({
 	type: ActionNames.SET_DURATION,
 	data: duration,
