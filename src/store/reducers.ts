@@ -18,6 +18,7 @@ const INITIAL_STATE: ReduxState = {
 	currentTime: 0,
 	duration: 0,
 	isPlaying: false,
+	playbackRate: 1,
 }
 
 const reducer = (state = INITIAL_STATE, action: ReduxAction): ReduxState => {
@@ -30,6 +31,9 @@ const reducer = (state = INITIAL_STATE, action: ReduxAction): ReduxState => {
 		}
 		case ActionNames.SET_DURATION: {
 			return { ...state, duration: action.data }
+		}
+		case ActionNames.SET_PLAYBACK_RATE: {
+			return { ...state, playbackRate: action.data }
 		}
 		default:
 			return state

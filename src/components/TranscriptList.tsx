@@ -52,29 +52,33 @@ const TranscriptList: FC<Props> = ({ transcript, currentTime, seekTo }) => {
 	)
 }
 
+type IsProspect = { isProspect: boolean }
+
 const Container = styled.div`
 	transition: all 0.5s;
 	:hover {
-		background-color: ${(p) => p.theme.primary5};
+		background-color: ${({ theme }) => theme.colors.primary5};
 	}
 	margin-top: 12px;
 `
 
-const Transcript = styled.div<{ isProspect: boolean }>`
+const Transcript = styled.div<IsProspect>`
 	display: flex;
 	align-items: baseline;
-	font-size: ${(p) => p.theme.fontSize};
-	margin-left: ${(p) => (p.isProspect ? '56px' : '0px')};
+	font-size: ${({ theme }) => theme.fontSize};
+	margin-left: ${({ isProspect }) => (isProspect ? '56px' : '0px')};
 `
 
-const StartTime = styled.div<{ isProspect: boolean }>`
-	color: ${(p) => (p.isProspect ? p.theme.secondary : p.theme.primary)};
+const StartTime = styled.div<IsProspect>`
+	color: ${({ theme, isProspect }) => (isProspect ? theme.colors.secondary : theme.colors.primary)};
 	margin-right: 2em;
 	font-weight: bold;
 `
 
-const TranscriptText = styled.div<{ isProspect: boolean }>`
-	border-left: 2px solid ${(p) => (p.isProspect ? p.theme.secondary25 : p.theme.primary25)};
+const TranscriptText = styled.div<IsProspect>`
+	border-left: 2px solid
+		${({ theme, isProspect }) => (isProspect ? theme.colors.secondary25 : theme.colors.primary25)};
+	color: ${({ theme }) => theme.colors.secondaryColor};
 	padding: 12px;
 	max-width: 80%;
 `
@@ -82,20 +86,20 @@ const TranscriptText = styled.div<{ isProspect: boolean }>`
 const TranscriptWord = styled.span<{ highlight: boolean }>`
 	cursor: pointer;
 	transition: all 0.25s;
-	background-color: ${(p) => (p.highlight ? p.theme.primary25 : 'inherit')};
+	background-color: ${({ theme, highlight }) => (highlight ? theme.colors.primary25 : 'inherit')};
 	:hover {
-		background-color: ${(p) => p.theme.primary25};
+		background-color: ${({ theme }) => theme.colors.primary25};
 	}
 `
 
-const Share = styled.div<{ isProspect: boolean }>`
+const Share = styled.div<IsProspect>`
 	display: none;
 	margin-top: 4px;
 	transition: all 0.5s;
 	font-size: 12px;
 	font-weight: bold;
 	cursor: pointer;
-	color: ${(p) => (p.isProspect ? p.theme.secondary : p.theme.primary)};
+	color: ${({ theme, isProspect }) => (isProspect ? theme.colors.secondary : theme.colors.primary)};
 	${Container}: hover & {
 		display: block;
 	}

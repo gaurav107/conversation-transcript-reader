@@ -11,18 +11,18 @@ const Container = styled.div`
 	display: inline-block;
 	padding: 0.5em;
 	margin: 1em 0;
-	font-size: ${(p) => p.theme.fontSize};
+	font-size: ${({ theme }) => theme.fontSize};
 	border-radius: 4px;
-	background-color: ${(p) => p.theme.headerBackground};
+	background-color: ${({ theme }) => theme.colors.headerBackground};
 `
 
 const CurrentTime = styled.span`
 	font-weight: bold;
-	color: ${(p) => p.theme.secondaryText};
+	color: ${({ theme }) => theme.colors.secondaryText};
 `
 
 const Duration = styled.span`
-	color: ${(p) => p.theme.primaryText};
+	color: ${({ theme }) => theme.colors.primaryText};
 `
 
 const TimeIndicator: FC<Props> = ({ currentTime, duration }) => (

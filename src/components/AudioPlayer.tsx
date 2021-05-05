@@ -44,12 +44,17 @@ class AudioPlayer extends Component<Props> {
 		if (targetTime <= 0) targetTime = 0
 		else if (targetTime >= this.duration) targetTime = this.duration
 		else current.currentTime = targetTime
+		this.props.updateCurrentTime(current.currentTime)
 	}
 
 	seekTo = (seconds: number) => {
 		const { current } = this.audioRef
 		current.currentTime = seconds
 		this.props.updateCurrentTime(current.currentTime)
+	}
+
+	updatePlaybackRate = (rate: number) => {
+		this.audioRef.current.playbackRate = rate
 	}
 
 	updateCurrentTime = () => {

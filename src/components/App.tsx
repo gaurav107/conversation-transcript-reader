@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useRef } from 'react'
-import '../styles/App.css'
 import * as actions from '../store/actions'
 import { connect, ConnectedProps } from 'react-redux'
 import Header from './Header'
@@ -18,9 +17,11 @@ const App: FC<ConnectedProps<typeof connector>> = ({
 	transcript,
 	currentTime,
 	isPlaying,
+	playbackRate,
 	duration,
 	setDuration,
 	updateCurrentTime,
+	setPlaybackRate,
 	play,
 	pause,
 	stop,
@@ -36,14 +37,21 @@ const App: FC<ConnectedProps<typeof connector>> = ({
 	const handleSeekTo = useCallback((seconds) => {
 		playerRef.current?.seekTo(seconds)
 	}, [])
+	const handlePlaybackRate = useCallback(
+		(rate) => {
+			playerRef.current?.updatePlaybackRate(rate)
+			setPlaybackRate(rate)
+		},
+		[setPlaybackRate]
+	)
 	return (
 		<div>
 			<Header
-				currentTime={currentTime}
 				isPlaying={isPlaying}
-				duration={duration}
 				seekBy={handleSeekBy}
 				handlePlayPause={handlePlayPause}
+				onPlaybackRateUpdate={handlePlaybackRate}
+				playbackRate={playbackRate}
 			/>
 			<AudioPlayer
 				audio={recording}

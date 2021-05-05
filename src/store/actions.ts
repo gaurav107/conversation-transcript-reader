@@ -20,6 +20,11 @@ export const setDuration = (duration: number): ReduxAction => ({
 	data: duration,
 })
 
+export const setPlaybackRate = (rate: number): ReduxAction => ({
+	type: ActionNames.SET_PLAYBACK_RATE,
+	data: rate,
+})
+
 export const updateCurrentTime = (time: number): ReduxAction => ({
 	type: ActionNames.UPDATE_CURRENT_TIME,
 	data: time,
